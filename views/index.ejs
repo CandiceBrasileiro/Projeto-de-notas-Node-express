@@ -1,0 +1,52 @@
+<%- include("./partials/header.ejs") %>
+
+
+  <body>
+    <%- include("./partials/navbar.ejs") %>
+      <br>
+      <br>
+      <div class="container">
+        <div class="card">
+          <div class="card-header" id="card-background">
+            <h1 class="h1-container">Lista de Alunos</h1>
+          </div>
+          <div class="card-body">
+            <table class="table table-hover">
+              <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>Nota 1</th>
+                <th>Nota 2</th>
+                <th>Média</th>
+                <th>Situação</th>
+              </tr>
+              <% alunos.forEach(aluno=> {%>
+                <tr>
+                  <td>
+                    <%= aluno.id %>
+                  </td>
+                  <td>
+                    <%= aluno.nome %>
+                  </td>
+                  <td>
+                    <%= aluno.nota1 %>
+                  </td>
+                  <td>
+                    <%= aluno.nota2 %>
+                  </td>
+                  <td>
+                    <%= (aluno.nota1 + aluno.nota2)/2 %>
+                  </td>
+                  <td>
+                    <% var media=((aluno.nota1 + aluno.nota2)/2); var situacao=media>= 7 ? "Aprovado" : media < 7 && media>= 4 ? "Recuperação" : "Reprovado" %>
+                        <%= situacao %>
+                  </td>
+                </tr>
+                <%})%>
+            </table>
+          </div>
+        </div>
+      </div>
+  </body>
+
+  <%- include("./partials/footer.ejs")%>
